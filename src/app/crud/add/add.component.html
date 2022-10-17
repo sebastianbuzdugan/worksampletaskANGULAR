@@ -1,0 +1,32 @@
+<div class="container">
+  <legend style="color:white;margin-top:10px;" class="d-inline p-2 bg-dark text-white text-center">Adauga</legend>
+  <!-- <form #f="ngForm" (ngSubmit)="saved(f)" novalidate> -->
+  <div class="mb-3">
+    <label for="txtBookName" class="form-label">Nume</label>
+    <input type="text" [(ngModel)]="cForm.name" placeholder="Numele tau" class="form-control" #name="ngModel"
+      required minlength="4" appForbiddenName="bob" />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+
+      <div *ngIf="name.errors?.['required']" style="color: red;">
+        Numele e necesar.
+      </div>
+      <div *ngIf="name.errors?.['minlength']" style="color: red;">
+        Numele trebuie sa fie de minim 4 caractere.
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2" id="textADD" class="form-label font-weight-bold" style="color:white;">Status</label>
+    <select [(ngModel)]="cForm.status" multiple class="form-control" id="txtStatus">
+      <option value="Available"  selected>Available</option>
+      <option value="Pending">Pending</option>
+      <option value="Sold">Sold</option>
+ 
+    </select>
+  </div>
+
+
+  <button type="button" id="textADD" class="btn btn-dark" (click)="runSuccess();save()" style="margin-top: 10px;">Creaza</button>
+<!-- </form> -->
+</div>

@@ -1,0 +1,65 @@
+<div class="container mt-2" >
+  <div class="row">
+    <div >
+      <a routerLink="/add" class="btn btn-dark" style="margin-top: 20px;margin-bottom: 20px;">Adauga</a>
+    </div>
+    <div>
+      <input type="text" 
+        placeholder="Cauta dupa status [nu functioneaza]" 
+        style="width: 350px; padding: 2px 20px; margin: 10px 0px 20px 0px;height: 40px;"
+        [(ngModel)]="filterText">
+    </div>
+    
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let cr of crud$ | async">
+      <div class="card">
+
+        <div class="card-body">
+       
+          <h5 class="card-text">Nume: {{ cr.name }}</h5>
+
+        
+          <h6 class="card-text">Status: {{ cr.status }}</h6>
+          <h6 class="card-text">ID: {{ cr.id }}</h6>
+               </div>
+ 
+        <div class="card-body">
+          <a [routerLink]="['/view', cr.id]" class="btn btn-dark" id="b1"
+          >Vizualizare</a >
+          <a [routerLink]="['/edit', cr.id]" class="btn btn-dark" id="b1"
+            >Editeaza</a >
+           
+
+
+          <button class="btn btn-dark" id="b1" (click)="openDeleteModal(cr.id)">
+            Sterge
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirma Stergerea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Esti sigur ca doresti sa stergi?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Inchide</button>
+        <button type="button" class="btn btn-danger" (click)="runSuccess();delete()">Confirma Stergerea</button>
+      </div>
+    </div>
+  </div>
+</div>

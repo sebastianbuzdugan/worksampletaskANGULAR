@@ -1,0 +1,33 @@
+<div class="container">
+  <legend>Editare</legend>
+  <div class="mb-3">
+    <label for="txtBookId" class="form-label">ID: {{ cForm.id }}</label>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="txtBookName" class="form-label">Nume</label>
+    <input type="text" [(ngModel)]="cForm.name" placeholder="Numele tau" class="form-control" #name="ngModel"
+      required minlength="4" appForbiddenName="bob" />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+
+      <div *ngIf="name.errors?.['required']" style="color: red;">
+        Numele e necesar.
+      </div>
+      <div *ngIf="name.errors?.['minlength']" style="color: red;">
+        Numele trebuie sa fie de minim 4 caractere.
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2" class="form-label">Status</label>
+    <select [(ngModel)]="cForm.status" multiple class="form-control" id="txtStatus">
+      <option value="Available">Available</option>
+      <option value="Pending">Pending</option>
+      <option value="Sold">Sold</option>
+
+    </select>
+  </div>
+  <button type="button" style="margin-top: 20px;" class="btn btn-dark" (click)="runSuccess();udapte()">Creaza</button>
+</div>

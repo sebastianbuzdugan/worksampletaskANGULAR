@@ -1,0 +1,11 @@
+{
+  "crud": [
+    {
+      "id": 1,
+      "name": "ads",
+      "status": [
+        "Available"
+      ]
+    }
+  ]
+}
